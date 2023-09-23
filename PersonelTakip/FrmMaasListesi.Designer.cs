@@ -361,6 +361,7 @@
             this.btnsil.TabIndex = 21;
             this.btnsil.Text = "sil";
             this.btnsil.UseVisualStyleBackColor = true;
+            this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
             // btnguncelle
             // 
@@ -394,6 +395,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1249, 308);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // FrmMaasListesi
             // 

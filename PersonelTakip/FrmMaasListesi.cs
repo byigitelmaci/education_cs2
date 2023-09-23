@@ -30,6 +30,8 @@ namespace PersonelTakip
         {
             FrmMaasBilgileri frm = new FrmMaasBilgileri();
             this.Hide();
+            frm.isUpdate = true;
+            frm.detay = detay;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -41,6 +43,7 @@ namespace PersonelTakip
         {
             FrmMaasBilgileri frm = new FrmMaasBilgileri();
             this.Hide();
+            frm.isUpdate = false    ;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -49,7 +52,7 @@ namespace PersonelTakip
         }
         MaasDTO dto = new MaasDTO();
         private bool combofull;
-
+        MaasDetayDTO detay = new MaasDetayDTO();
         private void FrmMaasListesi_Load(object sender, EventArgs e)
         {
             doldur();
@@ -141,6 +144,34 @@ namespace PersonelTakip
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             Temizle();
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.MaasID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
+            detay.PersoneID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            detay.MaasAyID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
+            detay.MaasYil = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            detay.MaasMiktar = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+            detay.UserNO = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detay.Ad = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detay.Soyad = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+
+
+        }
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Silinsinmi?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                MaasBLL.MaasSil(detay.MaasID);
+                MessageBox.Show("Silindi");
+                combofull = false;
+                doldur();
+                Temizle();
+            }
         }
     }
 }

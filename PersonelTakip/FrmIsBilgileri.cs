@@ -26,6 +26,9 @@ namespace PersonelTakip
         }
         IsDTO dto = new IsDTO();
         bool combofull=false;
+
+        public bool isUpdate = false;
+        public IsDetayDTO detay = new IsDetayDTO();
         private void FrmIsBilgileri_Load(object sender, EventArgs e)
         {
             cmbIsDurumu.Visible = false;
@@ -56,6 +59,22 @@ namespace PersonelTakip
             cmbpozisyon.DisplayMember = "PozisyonAd";
             cmbpozisyon.ValueMember = "ID";
             cmbpozisyon.SelectedIndex = -1;
+
+            if (isUpdate)
+            {
+                cmbIsDurumu.Visible = false;
+                label9.Visible = false;
+                txtadı.Text = detay.Ad;
+                txtsoyad.Text = detay.Soyad;
+                txtUserNo.Text = detay.UserNO.ToString();
+                txticerik.Text = detay.icerik;
+                txtbaslik.Text = detay.baslik;
+                cmbIsDurumu.DataSource = dto.Durumlar;
+                cmbIsDurumu.DisplayMember = "IsDurumAd";
+                cmbIsDurumu.ValueMember = "ID";
+                cmbIsDurumu.SelectedValue = detay.IsDurumID;
+
+            }
         }
 
         private void cmbdepartman_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,6 +97,8 @@ namespace PersonelTakip
         I iss = new I();
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+
+
             if(iss.PersonelID==0)
                 MessageBox.Show("Personel Seçin");
             else if(txtbaslik.Text.Trim()=="")
@@ -86,14 +107,39 @@ namespace PersonelTakip
                 MessageBox.Show("İçerik boş");
             else
             {
-                iss.Baslik=txtbaslik.Text;
-                iss.Icerik=txticerik.Text;
-                iss.IsDurumID = 1;
-                iss.IsBaslamaTarih = DateTime.Today;
-                IsBLL.IsEkle(iss);
-                MessageBox.Show("İş eklendi");
-                txtbaslik.Clear();
-                txticerik.Clear();
+                if (isUpdate)
+                {
+                    DialogResult result = MessageBox.Show("Eminmisin?","Dikkat",MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        IsDetayDTO dtoo = new IsDetayDTO();
+                        if (Convert.ToInt32(txtUserNo.Text)!=detay.UserNO)
+                            dtoo.PersoneID=iss.PersonelID;
+                        else
+                            dtoo.PersoneID =detay.PersoneID;
+                        dtoo.baslik=txtbaslik.Text;
+                        dtoo.icerik=txticerik.Text;
+                        dtoo.IsDurumID=Convert.ToInt32(cmbIsDurumu.SelectedValue);
+                        dtoo.IsID=detay.IsID;
+                        IsBLL.IsGuncelle(dtoo);
+                        MessageBox.Show("Güncellendi");
+                        this.Close(); 
+
+
+                    }
+                }
+                else
+                {
+                    iss.Baslik = txtbaslik.Text;
+                    iss.Icerik = txticerik.Text;
+                    iss.IsDurumID = 1;
+                    iss.IsBaslamaTarih = DateTime.Today;
+                    IsBLL.IsEkle(iss);
+                    MessageBox.Show("İş eklendi");
+                    txtbaslik.Clear();
+                    txticerik.Clear();
+                }
+                
 
             }
         }

@@ -47,6 +47,7 @@ namespace PersonelTakip
         {
             FrmIzinBilgileri frm = new FrmIzinBilgileri();
             this.Hide();
+            frm.isUpdate = false;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -56,13 +57,23 @@ namespace PersonelTakip
 
         private void btnguncelle_Click(object sender, EventArgs e)
         {
-            FrmIzinBilgileri frm = new FrmIzinBilgileri();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
-            combofull = false;
-            doldur();
-            temizle();
+            if(detay.IzinID== 0)
+                MessageBox.Show("lütfen izin seçin");
+            else
+            {
+                FrmIzinBilgileri frm = new FrmIzinBilgileri();
+                this.Hide();
+                frm.isUpdate = true;
+                frm.detay = detay;
+                frm.ShowDialog();
+                this.Visible = true;
+                combofull = false;
+                doldur();
+                temizle();
+            }
+
+            
+            
             
         }
         IzinDTO dto = new IzinDTO();
@@ -83,8 +94,8 @@ namespace PersonelTakip
             dataGridView1.Columns[8].HeaderText = "Başlama Tarihi";
             dataGridView1.Columns[9].HeaderText = "Bitiş Tarihi";
             dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].Visible = false; 
-            dataGridView1.Columns[12].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[12].HeaderText = "İzin Durumu";
             dataGridView1.Columns[13].Visible = false;
             dataGridView1.Columns[14].Visible = false;
             cmbdepartman.DataSource = dto.Departmanlar;
@@ -165,8 +176,61 @@ namespace PersonelTakip
         {
             temizle();
         }
-        
+        IzinDetayDTO detay = new IzinDetayDTO();
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.IzinID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[14].Value);
+            detay.BaslamaTarihi = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            detay.BitisTarihi = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detay.UserNO = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detay.Sure = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
+            detay.Aciklama = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
+            detay.IzinDurumID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
+        }
 
-        
+        private void btnOnayla_Click(object sender, EventArgs e)
+        {
+            if (detay.IzinID==0)
+                MessageBox.Show("Lütfen İzin Seçin");
+            else
+            {
+                IzinBLL.IzinGuncelle(detay.IzinID, ComboStatic.Onaylandı);
+                MessageBox.Show("Onaylandı");
+                temizle();
+                doldur();
+            }
+        }
+
+        private void btnReddet_Click(object sender, EventArgs e)
+        {
+            if (detay.IzinID == 0)
+                MessageBox.Show("Lütfen İzin Seçin");
+            else
+            {
+                IzinBLL.IzinGuncelle(detay.IzinID, ComboStatic.Reddedildi);
+                MessageBox.Show("Reddedildi");
+                temizle();
+                doldur();
+            }
+        }
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Silinsinmi?","Dikkat",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (detay.IzinDurumID==ComboStatic.Onaylandı || detay.IzinDurumID== ComboStatic.Reddedildi)
+                    MessageBox.Show("Onaylı Yada Reddedilmiş izinleri Silemezsiniz");
+                else
+                {
+                    IzinBLL.IzinSil(detay.IzinID);
+                    MessageBox.Show("Silindi");
+                    combofull = false;
+                    doldur();
+                    temizle();
+                    
+                }
+            }
+        }
     }
 }

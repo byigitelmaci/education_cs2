@@ -34,13 +34,14 @@ namespace PersonelTakip
         }
         IsDTO dto = new IsDTO();
         private bool combofull;
+        IsDetayDTO detay = new IsDetayDTO();
 
         private void FrmIsListesi_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(UserStatic.PersonelID.ToString() + " " + UserStatic.UserNo.ToString() + " " + UserStatic.isAdmin.ToString());
-            
+            //MessageBox.Show(UserStatic.PersonelID.ToString() + " " + UserStatic.UserNo.ToString() + " " + UserStatic.isAdmin.ToString());
+
             doldur();
-            
+
         }
 
         private void doldur()
@@ -82,6 +83,8 @@ namespace PersonelTakip
         {
             FrmIsBilgileri frm = new FrmIsBilgileri();
             this.Hide();
+            frm.isUpdate = true;
+            frm.detay = detay;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -93,6 +96,7 @@ namespace PersonelTakip
         {
             FrmIsBilgileri frm = new FrmIsBilgileri();
             this.Hide();
+            frm.isUpdate = false;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -141,11 +145,39 @@ namespace PersonelTakip
             cmbIsDurumu.SelectedIndex = -1;
             dpbaslama.Value = DateTime.Today;
             dpbitis.Value = DateTime.Today;
-            dataGridView1 .DataSource = dto.Isler;
+            dataGridView1.DataSource = dto.Isler;
         }
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             temizle();
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.IsID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[14].Value);
+            detay.UserNO = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detay.PersoneID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            detay.IsDurumID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
+            detay.baslik = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            detay.icerik = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
+            detay.Ad = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detay.Soyad = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            detay.IsBaslamaTarihi = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
+            detay.IsBitisTarihi = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
+
+        }
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Silinsinmi?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                IsBLL.IsSil(detay.IsID);
+                MessageBox.Show("Silindi");
+                combofull = false;
+                doldur();
+                temizle();
+            }
         }
     }
 }

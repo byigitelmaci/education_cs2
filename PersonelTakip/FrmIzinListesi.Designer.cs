@@ -375,6 +375,7 @@
             this.btnReddet.TabIndex = 27;
             this.btnReddet.Text = "reddet";
             this.btnReddet.UseVisualStyleBackColor = true;
+            this.btnReddet.Click += new System.EventHandler(this.btnReddet_Click);
             // 
             // btnOnayla
             // 
@@ -385,6 +386,7 @@
             this.btnOnayla.TabIndex = 26;
             this.btnOnayla.Text = "Onayla";
             this.btnOnayla.UseVisualStyleBackColor = true;
+            this.btnOnayla.Click += new System.EventHandler(this.btnOnayla_Click);
             // 
             // btnkapat
             // 
@@ -406,6 +408,7 @@
             this.btnsil.TabIndex = 24;
             this.btnsil.Text = "sil";
             this.btnsil.UseVisualStyleBackColor = true;
+            this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
             // btnguncelle
             // 
@@ -435,11 +438,13 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 335);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1245, 287);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // FrmIzinListesi
             // 
