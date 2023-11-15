@@ -36,6 +36,7 @@
             this.btnekle = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnTemizle = new System.Windows.Forms.Button();
             this.cmbIsDurumu = new System.Windows.Forms.ComboBox();
             this.btnAra = new System.Windows.Forms.Button();
@@ -88,8 +89,9 @@
             this.btnonayla.Name = "btnonayla";
             this.btnonayla.Size = new System.Drawing.Size(191, 89);
             this.btnonayla.TabIndex = 23;
-            this.btnonayla.Text = "onayla";
+            this.btnonayla.Text = "Onayla";
             this.btnonayla.UseVisualStyleBackColor = true;
+            this.btnonayla.Click += new System.EventHandler(this.btnonayla_Click);
             // 
             // btnkapat
             // 
@@ -98,7 +100,7 @@
             this.btnkapat.Name = "btnkapat";
             this.btnkapat.Size = new System.Drawing.Size(191, 89);
             this.btnkapat.TabIndex = 22;
-            this.btnkapat.Text = "kapat";
+            this.btnkapat.Text = "Kapat";
             this.btnkapat.UseVisualStyleBackColor = true;
             this.btnkapat.Click += new System.EventHandler(this.btnkapat_Click);
             // 
@@ -109,7 +111,7 @@
             this.btnsil.Name = "btnsil";
             this.btnsil.Size = new System.Drawing.Size(191, 89);
             this.btnsil.TabIndex = 21;
-            this.btnsil.Text = "sil";
+            this.btnsil.Text = "Sil";
             this.btnsil.UseVisualStyleBackColor = true;
             this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
@@ -120,7 +122,7 @@
             this.btngüncelle.Name = "btngüncelle";
             this.btngüncelle.Size = new System.Drawing.Size(191, 89);
             this.btngüncelle.TabIndex = 20;
-            this.btngüncelle.Text = "güncelle";
+            this.btngüncelle.Text = "Güncelle";
             this.btngüncelle.UseVisualStyleBackColor = true;
             this.btngüncelle.Click += new System.EventHandler(this.btngüncelle_Click);
             // 
@@ -131,7 +133,7 @@
             this.btnekle.Name = "btnekle";
             this.btnekle.Size = new System.Drawing.Size(191, 89);
             this.btnekle.TabIndex = 19;
-            this.btnekle.Text = "ekle";
+            this.btnekle.Text = "Ekle";
             this.btnekle.UseVisualStyleBackColor = true;
             this.btnekle.Click += new System.EventHandler(this.btnekle_Click);
             // 
@@ -147,6 +149,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.btnTemizle);
             this.panel4.Controls.Add(this.cmbIsDurumu);
             this.panel4.Controls.Add(this.btnAra);
@@ -163,6 +166,17 @@
             this.panel4.Size = new System.Drawing.Size(791, 291);
             this.panel4.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(86, 209);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 63);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnTemizle
             // 
             this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -170,7 +184,7 @@
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(157, 63);
             this.btnTemizle.TabIndex = 40;
-            this.btnTemizle.Text = "temizle";
+            this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
@@ -182,6 +196,7 @@
             this.cmbIsDurumu.Name = "cmbIsDurumu";
             this.cmbIsDurumu.Size = new System.Drawing.Size(261, 28);
             this.cmbIsDurumu.TabIndex = 38;
+            this.cmbIsDurumu.SelectedIndexChanged += new System.EventHandler(this.cmbIsDurumu_SelectedIndexChanged);
             // 
             // btnAra
             // 
@@ -190,7 +205,7 @@
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(157, 63);
             this.btnAra.TabIndex = 39;
-            this.btnAra.Text = "ara";
+            this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
             this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
@@ -210,10 +225,10 @@
             this.rbteslimtarihi.AutoSize = true;
             this.rbteslimtarihi.Location = new System.Drawing.Point(17, 59);
             this.rbteslimtarihi.Name = "rbteslimtarihi";
-            this.rbteslimtarihi.Size = new System.Drawing.Size(129, 29);
+            this.rbteslimtarihi.Size = new System.Drawing.Size(137, 29);
             this.rbteslimtarihi.TabIndex = 1;
             this.rbteslimtarihi.TabStop = true;
-            this.rbteslimtarihi.Text = "teslim tarihi";
+            this.rbteslimtarihi.Text = "Teslim tarihi";
             this.rbteslimtarihi.UseVisualStyleBackColor = true;
             // 
             // rbbaslamatarihi
@@ -221,10 +236,10 @@
             this.rbbaslamatarihi.AutoSize = true;
             this.rbbaslamatarihi.Location = new System.Drawing.Point(17, 29);
             this.rbbaslamatarihi.Name = "rbbaslamatarihi";
-            this.rbbaslamatarihi.Size = new System.Drawing.Size(153, 29);
+            this.rbbaslamatarihi.Size = new System.Drawing.Size(155, 29);
             this.rbbaslamatarihi.TabIndex = 0;
             this.rbbaslamatarihi.TabStop = true;
-            this.rbbaslamatarihi.Text = "başlama tarihi";
+            this.rbbaslamatarihi.Text = "Başlama tarihi";
             this.rbbaslamatarihi.UseVisualStyleBackColor = true;
             // 
             // label9
@@ -233,9 +248,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.Location = new System.Drawing.Point(47, 170);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 31);
+            this.label9.Size = new System.Drawing.Size(134, 31);
             this.label9.TabIndex = 37;
-            this.label9.Text = "iş durumu";
+            this.label9.Text = "İş durumu";
             // 
             // dpbitis
             // 
@@ -259,9 +274,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.Location = new System.Drawing.Point(47, 115);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 31);
+            this.label8.Size = new System.Drawing.Size(66, 31);
             this.label8.TabIndex = 33;
-            this.label8.Text = "bitis";
+            this.label8.Text = "Bitiş";
             // 
             // label7
             // 
@@ -269,9 +284,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.Location = new System.Drawing.Point(45, 60);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 31);
+            this.label7.Size = new System.Drawing.Size(119, 31);
             this.label7.TabIndex = 32;
-            this.label7.Text = "başlama";
+            this.label7.Text = "Başlama";
             // 
             // label6
             // 
@@ -334,9 +349,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.Location = new System.Drawing.Point(28, 222);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 31);
+            this.label5.Size = new System.Drawing.Size(125, 31);
             this.label5.TabIndex = 35;
-            this.label5.Text = "pozisyon";
+            this.label5.Text = "Pozisyon";
             // 
             // label3
             // 
@@ -344,9 +359,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(28, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 31);
+            this.label3.Size = new System.Drawing.Size(97, 31);
             this.label3.TabIndex = 31;
-            this.label3.Text = "soyadı";
+            this.label3.Text = "Soyadı";
             // 
             // label4
             // 
@@ -372,9 +387,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(28, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 31);
+            this.label2.Size = new System.Drawing.Size(53, 31);
             this.label2.TabIndex = 29;
-            this.label2.Text = "adı";
+            this.label2.Text = "Adı";
             // 
             // txtUserNo
             // 
@@ -468,5 +483,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUserNo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

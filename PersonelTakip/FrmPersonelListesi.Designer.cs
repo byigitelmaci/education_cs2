@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btntemizle = new System.Windows.Forms.Button();
             this.btnara = new System.Windows.Forms.Button();
             this.cmbpozisyon = new System.Windows.Forms.ComboBox();
@@ -68,6 +69,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btntemizle);
             this.panel1.Controls.Add(this.btnara);
             this.panel1.Controls.Add(this.cmbpozisyon);
@@ -86,10 +88,21 @@
             this.panel1.Size = new System.Drawing.Size(1143, 186);
             this.panel1.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(839, 93);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 89);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btntemizle
             // 
             this.btntemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btntemizle.Location = new System.Drawing.Point(940, 20);
+            this.btntemizle.Location = new System.Drawing.Point(940, -2);
             this.btntemizle.Name = "btntemizle";
             this.btntemizle.Size = new System.Drawing.Size(191, 89);
             this.btntemizle.TabIndex = 21;
@@ -100,7 +113,7 @@
             // btnara
             // 
             this.btnara.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnara.Location = new System.Drawing.Point(742, 20);
+            this.btnara.Location = new System.Drawing.Point(742, -2);
             this.btnara.Name = "btnara";
             this.btnara.Size = new System.Drawing.Size(191, 89);
             this.btnara.TabIndex = 20;
@@ -223,7 +236,7 @@
             this.btnkapat.Name = "btnkapat";
             this.btnkapat.Size = new System.Drawing.Size(191, 89);
             this.btnkapat.TabIndex = 18;
-            this.btnkapat.Text = "kapat";
+            this.btnkapat.Text = "Kapat";
             this.btnkapat.UseVisualStyleBackColor = true;
             this.btnkapat.Click += new System.EventHandler(this.btnkapat_Click);
             // 
@@ -234,7 +247,7 @@
             this.btnsil.Name = "btnsil";
             this.btnsil.Size = new System.Drawing.Size(191, 89);
             this.btnsil.TabIndex = 17;
-            this.btnsil.Text = "sil";
+            this.btnsil.Text = "Sil";
             this.btnsil.UseVisualStyleBackColor = true;
             this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
@@ -245,7 +258,7 @@
             this.btngüncelle.Name = "btngüncelle";
             this.btngüncelle.Size = new System.Drawing.Size(191, 89);
             this.btngüncelle.TabIndex = 16;
-            this.btngüncelle.Text = "güncelle";
+            this.btngüncelle.Text = "Güncelle";
             this.btngüncelle.UseVisualStyleBackColor = true;
             this.btngüncelle.Click += new System.EventHandler(this.btngüncelle_Click);
             // 
@@ -256,7 +269,7 @@
             this.btnekle.Name = "btnekle";
             this.btnekle.Size = new System.Drawing.Size(191, 89);
             this.btnekle.TabIndex = 15;
-            this.btnekle.Text = "ekle";
+            this.btnekle.Text = "Ekle";
             this.btnekle.UseVisualStyleBackColor = true;
             this.btnekle.Click += new System.EventHandler(this.btnekle_Click);
             // 
@@ -323,5 +336,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -37,7 +37,7 @@ namespace PersonelTakip
         {
             FrmPersonelBilgileri frm = new FrmPersonelBilgileri();
             this.Hide();
-            frm.isUpdate = true;
+            frm.isUpdate = false;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -49,7 +49,7 @@ namespace PersonelTakip
         {
             FrmPersonelBilgileri frm = new FrmPersonelBilgileri();
             this.Hide();
-            frm.isUpdate = true;
+            frm.isUpdate = false;
             frm.detay = detay;
             frm.ShowDialog();
             this.Visible = true;
@@ -107,14 +107,14 @@ namespace PersonelTakip
         private void btnara_Click(object sender, EventArgs e)
         {
             listt = dto.Personeller;
-            if(txtUserNo.Text.Trim() != "")
-                listt = listt.Where(X=> X.UserNO == Convert.ToInt32(txtUserNo.Text)).ToList();
+            if (txtUserNo.Text.Trim() != "")
+                listt = listt.Where(X => X.UserNO == Convert.ToInt32(txtUserNo.Text)).ToList();
             if (txtad.Text.Trim() != "")
                 listt = listt.Where(X => X.Ad.Contains(txtad.Text)).ToList();
             if (txtSoyad.Text.Trim() != "")
                 listt = listt.Where(X => X.Soyad.Contains(txtSoyad.Text)).ToList();
-            if (cmbDepartman.SelectedIndex !=  -1)
-                listt=listt.Where(x=>x.DepartmanID == Convert.ToInt32(cmbDepartman.SelectedValue)).ToList();
+            if (cmbDepartman.SelectedIndex != -1)
+                listt = listt.Where(x => x.DepartmanID == Convert.ToInt32(cmbDepartman.SelectedValue)).ToList();
             if (cmbpozisyon.SelectedIndex != -1)
                 listt = listt.Where(x => x.PozisyonID == Convert.ToInt32(cmbpozisyon.SelectedValue)).ToList();
             dataGridView1.DataSource = listt;
@@ -164,13 +164,21 @@ namespace PersonelTakip
             if (result == DialogResult.Yes)
             {
                 PersonelBLL.PersonelSil(detay.PersoneID);
-                string resimyol = Application.StartupPath + "\\resimler\\" + detay.Resim;
+                string resimyol = Application.StartupPath + "\\resimlerrr\\" + detay.Resim;
                 File.Delete(resimyol);
                 MessageBox.Show("Silindi");
                 combofull = false;
-                doldur();
                 temizle();
+                doldur();
+                
             }
+        }
+
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelExport.ExportExcel(dataGridView1);
         }
     }
 }

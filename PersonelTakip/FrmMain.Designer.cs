@@ -118,7 +118,7 @@
             this.btnisler.Name = "btnisler";
             this.btnisler.Size = new System.Drawing.Size(208, 124);
             this.btnisler.TabIndex = 9;
-            this.btnisler.Text = "lşler";
+            this.btnisler.Text = "İşler";
             this.btnisler.UseVisualStyleBackColor = false;
             this.btnisler.Click += new System.EventHandler(this.btnisler_Click);
             // 
@@ -152,6 +152,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personel Takip";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
 
         }

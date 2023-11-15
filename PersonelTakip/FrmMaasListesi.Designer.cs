@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnTemizle = new System.Windows.Forms.Button();
             this.btnAra = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -79,6 +80,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btnTemizle);
             this.panel3.Controls.Add(this.btnAra);
             this.panel3.Controls.Add(this.groupBox1);
@@ -94,25 +96,36 @@
             this.panel3.Size = new System.Drawing.Size(776, 264);
             this.panel3.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(376, 184);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 63);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnTemizle
             // 
             this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.Location = new System.Drawing.Point(315, 184);
+            this.btnTemizle.Location = new System.Drawing.Point(29, 184);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(157, 63);
             this.btnTemizle.TabIndex = 61;
-            this.btnTemizle.Text = "temizle";
+            this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // btnAra
             // 
             this.btnAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAra.Location = new System.Drawing.Point(112, 184);
+            this.btnAra.Location = new System.Drawing.Point(200, 184);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(157, 63);
             this.btnAra.TabIndex = 60;
-            this.btnAra.Text = "ara";
+            this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
             this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
@@ -269,9 +282,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.Location = new System.Drawing.Point(18, 213);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 31);
+            this.label5.Size = new System.Drawing.Size(125, 31);
             this.label5.TabIndex = 48;
-            this.label5.Text = "pozisyon";
+            this.label5.Text = "Pozisyon";
             // 
             // label1
             // 
@@ -299,9 +312,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(18, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 31);
+            this.label3.Size = new System.Drawing.Size(97, 31);
             this.label3.TabIndex = 44;
-            this.label3.Text = "soyadı";
+            this.label3.Text = "Soyadı";
             // 
             // txtUserNo
             // 
@@ -325,9 +338,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(18, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 31);
+            this.label2.Size = new System.Drawing.Size(53, 31);
             this.label2.TabIndex = 42;
-            this.label2.Text = "adı";
+            this.label2.Text = "Adı";
             // 
             // panel4
             // 
@@ -348,7 +361,7 @@
             this.btnkapat.Name = "btnkapat";
             this.btnkapat.Size = new System.Drawing.Size(183, 81);
             this.btnkapat.TabIndex = 22;
-            this.btnkapat.Text = "kapat";
+            this.btnkapat.Text = "Kapat";
             this.btnkapat.UseVisualStyleBackColor = true;
             this.btnkapat.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -359,7 +372,7 @@
             this.btnsil.Name = "btnsil";
             this.btnsil.Size = new System.Drawing.Size(183, 81);
             this.btnsil.TabIndex = 21;
-            this.btnsil.Text = "sil";
+            this.btnsil.Text = "Sil";
             this.btnsil.UseVisualStyleBackColor = true;
             this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
@@ -370,7 +383,7 @@
             this.btnguncelle.Name = "btnguncelle";
             this.btnguncelle.Size = new System.Drawing.Size(183, 81);
             this.btnguncelle.TabIndex = 20;
-            this.btnguncelle.Text = "güncelle";
+            this.btnguncelle.Text = "Güncelle";
             this.btnguncelle.UseVisualStyleBackColor = true;
             this.btnguncelle.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -381,12 +394,13 @@
             this.btnekle.Name = "btnekle";
             this.btnekle.Size = new System.Drawing.Size(183, 81);
             this.btnekle.TabIndex = 19;
-            this.btnekle.Text = "ekle";
+            this.btnekle.Text = "Ekle";
             this.btnekle.UseVisualStyleBackColor = true;
             this.btnekle.Click += new System.EventHandler(this.btnekle_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 264);
@@ -455,5 +469,6 @@
         private System.Windows.Forms.Button btnguncelle;
         private System.Windows.Forms.Button btnekle;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

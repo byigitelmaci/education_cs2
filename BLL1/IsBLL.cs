@@ -26,5 +26,20 @@ namespace BLL1
         {
             IsDAO.IsEkle(iss);
         }
+
+        public static void IsGuncelle(IsDetayDTO dto)
+        {
+            IsDAO.IsGuncell(dto);
+        }
+
+        public static void IsGuncelle(int isID)
+        {
+            IsDAO.IsGuncellle(isID);
+        }
+
+        public static void IsSil(int isID)
+        {
+            IsDAO.IsSil(isID);
+        }
     }
 }

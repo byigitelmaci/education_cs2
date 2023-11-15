@@ -19,5 +19,15 @@ namespace BLL1
         {
             return DepartmanDAO1.DepartmanGetir();
         }
+
+        public static void DepartmanGuncelle(DEPARTMAN dpt)
+        {
+            DepartmanDAO1.DepartmanGuncelle(dpt);
+        }
+
+        public static void DepartmanSil(int id)
+        {
+            DepartmanDAO1.departmanSil(id);
+        }
     }
 }

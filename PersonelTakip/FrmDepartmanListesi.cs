@@ -63,5 +63,18 @@ namespace PersonelTakip
             detay.DepartmanAd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
         }
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Silinsinmi?","Dikkat",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                DepartmanBLL1.DepartmanSil(detay.ID);
+                MessageBox.Show("Silindi");
+                liste = DepartmanBLL1.DepartmanGetir();
+                dataGridView1.DataSource = liste;   
+
+            }
+        }
     }
 }

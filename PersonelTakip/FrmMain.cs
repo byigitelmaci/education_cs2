@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAL1.DTO;
+using BLL1;
 
 namespace PersonelTakip
 {
@@ -24,10 +26,27 @@ namespace PersonelTakip
 
         private void btnPersonel_Click(object sender, EventArgs e)
         {
-            FrmPersonelListesi frm = new FrmPersonelListesi();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
+            if (!UserStatic.isAdmin)
+            {
+                FrmPersonelBilgileri frm = new FrmPersonelBilgileri();
+                PersonelDTO dto = new PersonelDTO();
+                dto = PersonelBLL.GetAll();
+                PersonelDetayDTO detay = new PersonelDetayDTO();
+                detay = dto.Personeller.First(x => x.PersoneID == UserStatic.PersonelID);
+                frm.isUpdate = true;
+                frm.detay = detay;
+                frm.ShowDialog();
+                this.Visible= true;
+
+            }
+            else
+            {
+                FrmPersonelListesi frm = new FrmPersonelListesi();
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+            }
+            
         }
 
         private void btnisler_Click(object sender, EventArgs e)
@@ -81,6 +100,19 @@ namespace PersonelTakip
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            if (!UserStatic.isAdmin)
+            {
+                btndepartman.Visible = false;
+                btnpozisyon.Visible = false;
+                btnoturumukapat.Location = new Point(232, 158);
+                btncıkıs.Location=new Point (400, 158);
+
+            }
+
         }
     }
 }

@@ -139,6 +139,7 @@ namespace PersonelTakip
                     MaasBLL.MaasEkle(maas,control);
                     MessageBox.Show("Maaş Eklendi.");
                     txtmaas.Clear();
+                    cmbAylar.SelectedIndex = -1;
                 }
             }
         }

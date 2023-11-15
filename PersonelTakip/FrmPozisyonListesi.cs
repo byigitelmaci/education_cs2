@@ -68,5 +68,22 @@ namespace PersonelTakip
             detay.PozisyonAD = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
         }
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Silinsinmi?","Dikkat",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                PozisyonBLL.PozisyonSil(detay.ID);
+                MessageBox.Show("Silindi");
+                liste = PozisyonBLL.PozisyonGetir();
+                dataGridView1.DataSource = liste;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("sdtgjdfhbsdf");
+        }
     }
 }

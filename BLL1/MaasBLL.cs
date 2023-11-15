@@ -22,9 +22,28 @@ namespace BLL1
             return dto;
         }
 
-        public static void MaasEkle(MAASST maas)
+        public static void MaasEkle(MAASST maas, bool control)
         {
             MaasDAO.MaasEkle(maas);
+            if (control)
+            {
+                MaasDetayDTO dto = new MaasDetayDTO();
+                dto.PersoneID = maas.PersonelID;
+                dto.MaasMiktar = maas.Miktar;
+                PersonelDAO.PersonelMaasGuncelle(dto);
+            }
+        }
+
+        public static void MaasGuncelle(MaasDetayDTO maas, bool control)
+        {
+            MaasDAO.MaasGuncelle(maas);
+            if (control)
+                PersonelDAO.PersonelMaasGuncelle(maas);
+        }
+
+        public static void MaasSil(int maasID)
+        {
+            MaasDAO.MaasSil(maasID);
         }
     }
 }

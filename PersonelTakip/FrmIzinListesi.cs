@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL1.DTO;
 using BLL1;
-
+using DAL1;
 
 namespace PersonelTakip
 {
@@ -57,8 +57,10 @@ namespace PersonelTakip
 
         private void btnguncelle_Click(object sender, EventArgs e)
         {
-            if(detay.IzinID== 0)
+            if (detay.IzinID == 0)
                 MessageBox.Show("lütfen izin seçin");
+            else if (detay.IzinDurumID == ComboStatic.Onaylandı || detay.IzinDurumID == ComboStatic.Reddedildi)
+                MessageBox.Show("Onaylanmış Yada Reddedilmiş izinler Güncellenemez");
             else
             {
                 FrmIzinBilgileri frm = new FrmIzinBilgileri();
@@ -117,6 +119,20 @@ namespace PersonelTakip
         {
 
             doldur();
+            if (!UserStatic.isAdmin)
+            {
+                dto.Izinler = dto.Izinler.Where(x => x.PersoneID == UserStatic.PersonelID).ToList();
+                dataGridView1.DataSource = dto.Izinler; 
+                panel3.Visible = false;
+                btnOnayla.Visible = false;
+                btnReddet.Visible = false;
+                btnekle.Location= new Point(100, 33);
+                btnguncelle.Location = new Point(280, 33);
+                btnsil.Location = new Point(460, 33);
+                btnkapat.Location = new Point(640, 33);
+
+            }
+
         }
 
         private void cmbdepartman_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,6 +247,12 @@ namespace PersonelTakip
                     
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelExport.ExportExcel(dataGridView1);
+
         }
     }
 }

@@ -27,5 +27,20 @@ namespace BLL1
             dto.Izinler = IzinDAO.IZinGetir();
             return dto;
         }
+
+        public static void IzinGuncelle(IzinDetayDTO detayDTO)
+        {
+            IzinDAO.IzinGunceller(detayDTO);
+        }
+
+        public static void IzinGuncelle(int ızinID, int onaylandı)
+        {
+            IzinDAO.IzinGunceller(ızinID, onaylandı);
+        }
+
+        public static void IzinSil(int izinID)
+        {
+            IzinDAO.IzinSil(izinID);
+        }
     }
 }

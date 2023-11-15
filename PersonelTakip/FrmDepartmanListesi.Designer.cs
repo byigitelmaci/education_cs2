@@ -70,7 +70,7 @@
             this.btnkapat.Name = "btnkapat";
             this.btnkapat.Size = new System.Drawing.Size(191, 89);
             this.btnkapat.TabIndex = 10;
-            this.btnkapat.Text = "kapat";
+            this.btnkapat.Text = "Kapat";
             this.btnkapat.UseVisualStyleBackColor = true;
             this.btnkapat.Click += new System.EventHandler(this.btnkapat_Click);
             // 
@@ -81,8 +81,9 @@
             this.btnsil.Name = "btnsil";
             this.btnsil.Size = new System.Drawing.Size(191, 89);
             this.btnsil.TabIndex = 9;
-            this.btnsil.Text = "sil";
+            this.btnsil.Text = "Sil";
             this.btnsil.UseVisualStyleBackColor = true;
+            this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
             // 
             // btngüncelle
             // 
@@ -91,7 +92,7 @@
             this.btngüncelle.Name = "btngüncelle";
             this.btngüncelle.Size = new System.Drawing.Size(191, 89);
             this.btngüncelle.TabIndex = 8;
-            this.btngüncelle.Text = "güncelle";
+            this.btngüncelle.Text = "Güncelle";
             this.btngüncelle.UseVisualStyleBackColor = true;
             this.btngüncelle.Click += new System.EventHandler(this.btngüncelle_Click);
             // 
@@ -102,7 +103,7 @@
             this.btnekle.Name = "btnekle";
             this.btnekle.Size = new System.Drawing.Size(191, 89);
             this.btnekle.TabIndex = 7;
-            this.btnekle.Text = "ekle";
+            this.btnekle.Text = "Ekle";
             this.btnekle.UseVisualStyleBackColor = true;
             this.btnekle.Click += new System.EventHandler(this.btnekle_Click);
             // 

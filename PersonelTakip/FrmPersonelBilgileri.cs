@@ -11,11 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+//using System.Diagnostics;
 
 namespace PersonelTakip
 {
     public partial class FrmPersonelBilgileri : Form
     {
+        PersonelDTO dto = new PersonelDTO();
+        public PersonelDetayDTO detay = new PersonelDetayDTO();
+        public bool isUpdate = false;
+        string resim2 = "";
+
         public FrmPersonelBilgileri()
         {
             InitializeComponent();
@@ -41,14 +47,11 @@ namespace PersonelTakip
         {
             this.Close();
         }
-        PersonelDTO dto = new PersonelDTO(); 
-        public PersonelDetayDTO detay = new PersonelDetayDTO();
-        public bool isUpdate = false;
-        string resim2 = "";
+       
 
         private void FrmPersonelBilgileri_Load(object sender, EventArgs e)
         {
-            dto = PersonelBLL.GetAll();
+            dto = PersonelBLL.GetAll(); 
             cmbdepartman.DataSource = dto.Departmanlar;
             cmbdepartman.DisplayMember = "DepartmanAd";
             cmbdepartman.ValueMember = "ID";
@@ -70,10 +73,25 @@ namespace PersonelTakip
                 chisadmin.Checked = detay.isadmin;
                 cmbdepartman.SelectedValue = detay.DepartmanID;
                 cmbpozisyon.SelectedValue = detay.PozisyonID;
-                resim2 = Application.StartupPath + "\\resimler\\" + detay.Resim;
+                //resim2 = "C:\\Users\\HUAWEI\\OneDrive\\Masaüstü\\resimler2\\demo2.png";
+                //detay.Resim = resim2;
+                resim2 = Application.StartupPath + "\\resimlerrr\\" + detay.Resim;
                 txtresim.Text = resim2;
                 pictureBox1.Load(resim2);
-            }
+                
+                if (!UserStatic.isAdmin)
+                {
+                    txtadı.Enabled= false;
+                    txtsoyad.Enabled= false;
+                    txtmaas.Enabled= false;
+                    txtUserNo.Enabled= false;
+                    chisadmin.Enabled= false;
+                    cmbdepartman.Enabled= false;
+                    cmbpozisyon.Enabled= false;
+                }
+
+
+            } 
 
 
         }
@@ -88,14 +106,14 @@ namespace PersonelTakip
                 cmbpozisyon.DataSource = dto.Pozisyonlar.Where(x => x.DepartmanID == departmanID).ToList();
             }
         }
-
+        
         private void btnsec_Click(object sender, EventArgs e)
         {
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Load(openFileDialog1.FileName);
                 txtresim.Text = openFileDialog1.FileName;
-                resimad=Guid.NewGuid().ToString();
+                resimad = Guid.NewGuid().ToString();
                 resimad += openFileDialog1.SafeFileName;
             }
         }
@@ -146,7 +164,7 @@ namespace PersonelTakip
                             pr.Resim = resimad;
                             if (File.Exists(resim2))
                                 File.Delete(resim2);
-                            File.Copy(txtresim.Text, @"resimler\\" + resimad);
+                            File.Copy(txtresim.Text, @"resimlerrr\\" + resimad);
 
                         }
                         else
@@ -173,7 +191,7 @@ namespace PersonelTakip
                     pr.DogumGunu = dateTimePicker1.Value;
                     pr.Resim = resimad;
                     PersonelBLL.PersonelEkle(pr);
-                    File.Copy(txtresim.Text, @"resimler\\" + resimad);
+                    File.Copy(txtresim.Text, @"resimlerrr\\" + resimad);
                     MessageBox.Show("Personel Eklendi");
                     txtUserNo.Clear();
                     txtPassword.Clear();
@@ -210,6 +228,11 @@ namespace PersonelTakip
             {
                 MessageBox.Show("Bu userno kullanılabilir");
             }
+        }
+
+        private void txtresim_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

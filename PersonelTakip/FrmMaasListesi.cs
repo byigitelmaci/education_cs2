@@ -43,7 +43,7 @@ namespace PersonelTakip
         {
             FrmMaasBilgileri frm = new FrmMaasBilgileri();
             this.Hide();
-            frm.isUpdate = false    ;
+            frm.isUpdate = false;
             frm.ShowDialog();
             this.Visible = true;
             combofull = false;
@@ -56,6 +56,16 @@ namespace PersonelTakip
         private void FrmMaasListesi_Load(object sender, EventArgs e)
         {
             doldur();
+            if (!UserStatic.isAdmin)
+            {
+                btnekle.Visible = false;
+                btnguncelle.Visible = false;
+                btnsil.Visible = false;
+                dto.Maaslar=dto.Maaslar.Where(x=> x.PersoneID==UserStatic.PersonelID).ToList();
+                dataGridView1.DataSource = dto.Maaslar;
+                panel2.Visible = false;
+                btnkapat.Location = new Point(400, 20);
+            }
 
         }
 
@@ -172,6 +182,12 @@ namespace PersonelTakip
                 doldur();
                 Temizle();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelExport.ExportExcel(dataGridView1);
+
         }
     }
 }

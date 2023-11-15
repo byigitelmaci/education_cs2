@@ -135,7 +135,7 @@
             this.btnKapat.Name = "btnKapat";
             this.btnKapat.Size = new System.Drawing.Size(183, 81);
             this.btnKapat.TabIndex = 57;
-            this.btnKapat.Text = "kapat";
+            this.btnKapat.Text = "Kapat";
             this.btnKapat.UseVisualStyleBackColor = true;
             this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
@@ -146,7 +146,7 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(183, 81);
             this.btnKaydet.TabIndex = 56;
-            this.btnKaydet.Text = "kaydet";
+            this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 

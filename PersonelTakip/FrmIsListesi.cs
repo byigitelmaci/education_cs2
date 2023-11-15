@@ -38,10 +38,21 @@ namespace PersonelTakip
 
         private void FrmIsListesi_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show(UserStatic.PersonelID.ToString() + " " + UserStatic.UserNo.ToString() + " " + UserStatic.isAdmin.ToString());
 
             doldur();
-
+            if (!UserStatic.isAdmin)
+            {
+                btnekle.Visible = false;
+                btngüncelle.Visible = false;
+                btnsil.Visible = false;
+                btnonayla.Location = new Point(300, 23);
+                btnkapat.Location = new Point(480, 23);
+                Pnlforadmin.Visible = false;
+                dto.Isler=dto.Isler.Where(x=>x.PersoneID==UserStatic.PersonelID).ToList();
+                dataGridView1.DataSource = dto.Isler;
+                btnonayla.Text = "Tamamla";
+            }
+        
         }
 
         private void doldur()
@@ -58,7 +69,7 @@ namespace PersonelTakip
             dataGridView1.Columns[7].Visible = false;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
-            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[10].HeaderText = "Durumu";
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
@@ -178,6 +189,35 @@ namespace PersonelTakip
                 doldur();
                 temizle();
             }
+        }
+
+        private void btnonayla_Click(object sender, EventArgs e)
+        {
+            if (UserStatic.isAdmin && detay.IsDurumID == OnayStatic.Onaylandı)
+                MessageBox.Show("Bu İş Onaylanmış");
+            else if (UserStatic.isAdmin && detay.IsDurumID == OnayStatic.Personelde && detay.PersoneID!=UserStatic.PersonelID)
+                MessageBox.Show("işin Önce Tamamlanması Gerekir");
+            else if (!UserStatic.isAdmin && detay.IsDurumID == OnayStatic.Tamamlandı)
+                MessageBox.Show("İş Zaten Tamamlanmış");
+            else
+            {
+                IsBLL.IsGuncelle(detay.IsID);   
+                MessageBox.Show("Onaylandı");
+                combofull = false;
+                doldur();
+                temizle();
+            }
+        }
+
+        private void cmbIsDurumu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelExport.ExportExcel(dataGridView1);
+
         }
     }
 }

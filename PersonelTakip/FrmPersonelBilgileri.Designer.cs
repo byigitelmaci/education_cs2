@@ -110,7 +110,7 @@
             this.btncontrol.Name = "btncontrol";
             this.btncontrol.Size = new System.Drawing.Size(168, 50);
             this.btncontrol.TabIndex = 13;
-            this.btncontrol.Text = "control";
+            this.btncontrol.Text = "Control";
             this.btncontrol.UseVisualStyleBackColor = true;
             this.btncontrol.Click += new System.EventHandler(this.btncontrol_Click);
             // 
@@ -140,7 +140,7 @@
             this.btnKapat.Name = "btnKapat";
             this.btnKapat.Size = new System.Drawing.Size(183, 81);
             this.btnKapat.TabIndex = 57;
-            this.btnKapat.Text = "kapat";
+            this.btnKapat.Text = "Kapat";
             this.btnKapat.UseVisualStyleBackColor = true;
             this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
@@ -151,7 +151,7 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(183, 81);
             this.btnKaydet.TabIndex = 56;
-            this.btnKaydet.Text = "kaydet";
+            this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
@@ -170,9 +170,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label10.Location = new System.Drawing.Point(41, 584);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 31);
+            this.label10.Size = new System.Drawing.Size(85, 31);
             this.label10.TabIndex = 54;
-            this.label10.Text = "adres";
+            this.label10.Text = "Adres";
             // 
             // dateTimePicker1
             // 
@@ -188,9 +188,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.Location = new System.Drawing.Point(41, 515);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(162, 31);
+            this.label9.Size = new System.Drawing.Size(176, 31);
             this.label9.TabIndex = 52;
-            this.label9.Text = "doğum tarihi";
+            this.label9.Text = "Doğum Tarihi";
             // 
             // pictureBox1
             // 
@@ -208,7 +208,7 @@
             this.btnsec.Name = "btnsec";
             this.btnsec.Size = new System.Drawing.Size(131, 47);
             this.btnsec.TabIndex = 38;
-            this.btnsec.Text = "seç";
+            this.btnsec.Text = "Seç";
             this.btnsec.UseVisualStyleBackColor = true;
             this.btnsec.Click += new System.EventHandler(this.btnsec_Click);
             // 
@@ -227,9 +227,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.Location = new System.Drawing.Point(41, 424);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 31);
+            this.label7.Size = new System.Drawing.Size(125, 31);
             this.label7.TabIndex = 49;
-            this.label7.Text = "pozisyon";
+            this.label7.Text = "Pozisyon";
             // 
             // cmbdepartman
             // 
@@ -268,7 +268,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 31);
             this.label5.TabIndex = 45;
-            this.label5.Text = "maaş";
+            this.label5.Text = "Maaş";
             // 
             // txtresim
             // 
@@ -278,6 +278,7 @@
             this.txtresim.ReadOnly = true;
             this.txtresim.Size = new System.Drawing.Size(245, 30);
             this.txtresim.TabIndex = 44;
+            this.txtresim.TextChanged += new System.EventHandler(this.txtresim_TextChanged);
             // 
             // label6
             // 
@@ -285,9 +286,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.Location = new System.Drawing.Point(41, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 31);
+            this.label6.Size = new System.Drawing.Size(91, 31);
             this.label6.TabIndex = 43;
-            this.label6.Text = "resim";
+            this.label6.Text = "Resim";
             // 
             // txtsoyad
             // 
@@ -303,9 +304,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(41, 162);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 31);
+            this.label3.Size = new System.Drawing.Size(97, 31);
             this.label3.TabIndex = 41;
-            this.label3.Text = "soyadı";
+            this.label3.Text = "Soyadı";
             // 
             // txtadı
             // 
@@ -321,9 +322,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.Location = new System.Drawing.Point(41, 111);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 31);
+            this.label4.Size = new System.Drawing.Size(53, 31);
             this.label4.TabIndex = 39;
-            this.label4.Text = "adı";
+            this.label4.Text = "Adı";
             // 
             // openFileDialog1
             // 
